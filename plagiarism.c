@@ -111,8 +111,8 @@ int main(){
     printf("\nPlagiarism Checker\n---------------------\n");
     printf("  %20s: %s\n", "Checking file", "target.txt");
     printf("  %20s: %s\n", "Source file", "source.txt");
-    char wd1[100] = "C:\\Users\\ayush\\Dropbox\\MUJ V Sem\\DAA Lab\\DAA Project\\target.txt";
-    char wd2[100] = "C:\\Users\\ayush\\Dropbox\\MUJ V Sem\\DAA Lab\\DAA Project\\source.txt";
+    char wd1[100] = "target.txt";
+    char wd2[100] = "source.txt";
 
     FILE *tfp = fopen(wd2, "r");
     if(tfp == NULL){
