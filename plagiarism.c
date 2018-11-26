@@ -107,19 +107,15 @@ void lower(char* str){
         str[i] = tolower(str[i]);
 }
 
-int main(){
-    printf("\nPlagiarism Checker\n---------------------\n");
-    printf("  %20s: %s\n", "Checking file", "target.txt");
-    printf("  %20s: %s\n", "Source file", "source.txt");
-    char wd1[100] = "target.txt";
-    char wd2[100] = "source.txt";
+void processFile(char src[100], char target[100]){
+    printf("\n\n  %20s: %s\n", "Source file", src);
 
-    FILE *tfp = fopen(wd2, "r");
+    FILE *tfp = fopen(target, "r");
     if(tfp == NULL){
       perror("Error opening target file. ");
       exit(EXIT_FAILURE);
     }
-    FILE *sfp = fopen(wd1, "r");
+    FILE *sfp = fopen(src, "r");
     if(sfp == NULL){
         perror("Error opening source file. ");
         exit(EXIT_FAILURE);
@@ -151,12 +147,12 @@ int main(){
     free(string);
     fclose(tfp);
 
-    tfp = fopen(wd2, "r");
+    tfp = fopen(target, "r");
     if(tfp == NULL){
       perror("Error opening target file. ");
       exit(EXIT_FAILURE);
     }
-    sfp = fopen(wd1, "r");
+    sfp = fopen(src, "r");
     if(sfp == NULL){
         perror("Error opening source file. ");
         exit(EXIT_FAILURE);
@@ -202,6 +198,19 @@ int main(){
 
     printf("\n%32s: %.2f plagiarism", "Longest Common Subseq. (LCSS)", lcssRes/totalText*100);
     printf("\n%32s: %.2f plagiarism", "Rabin Karp (RK)", rkRes/totalLines*100);
+}
+
+int main(){
+    printf("\nPlagiarism Checker\n---------------------\n");
+
+    char wd1[100] = "source.txt";
+    char wd2[100] = "source2.txt";
+    char wd3[100] = "target.txt";
+
+    printf("%s: %s\n", "Checking file", wd3);
+
+    processFile(wd1, wd3);
+    processFile(wd2, wd3);
 
     return 0;
 }
